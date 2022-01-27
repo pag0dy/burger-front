@@ -1,11 +1,6 @@
 <template lang="html">
-  <div class="welcome-component">
-    <h2>Ejemplo y bienvenida</h2>
-    <p>Con este componente puedes ver cómo se pasa {{ algo }} de un componente a otro
-       a través de los props. </p>
-    <p>Y además hace una llamada a la api al crearse, que debería responderte con el
-      saludo de bienvenida:</p>
-    <p class="hi">{{ saludo }}</p>
+  <div>
+    <h2>Crea una nueva hamburguesa</h2>
   </div>
 </template>
 
@@ -35,12 +30,5 @@ export default {
 </script>
 
 <style>
-.welcome-component {
-  padding: 10px;
-  border: black 2px solid;
-}
-.hi {
-  font-weight: bold;
-  font-size: 1.5rem;
-}
+
 </style>

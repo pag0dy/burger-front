@@ -1,7 +1,8 @@
 <template>
   <div>
-    <h1>Completa aquí el desafío</h1>
-    <Burger-component :burgers="burgers"/>
+    <img alt="burger" src="../assets/burger.svg">
+    <h1>Hamburguesas</h1>
+    <Burger-component :burgers="burger"/>
   </div>
 </template>
 
@@ -13,11 +14,16 @@ export default {
   components: { BurgerComponent },
   data() {
     return {
-      burger: 'burger'
+      burger: 'burgers'
       }
     }
 }
 </script>
 
 <style>
+img {
+  width: 200px;
+  height: auto;
+}
+
 </style>
