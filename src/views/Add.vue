@@ -1,7 +1,7 @@
 <template>
   <div class="add">
     <img alt="Vue logo" src="../assets/logo.png">
-    <AddComponent :algo="unaVariable"/>
+    <AddComponent :burgers="burger"/>
   </div>
 </template>
 
