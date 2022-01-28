@@ -1,6 +1,6 @@
 <template>
     <div class="burgers">
-        <div id="burgers" v-for="burger in burgers" :key=burger>
+        <div id="burgers" v-for="burger in burgers" :key=burger.id>
             <h3>{{ burger.nombre }}</h3>
             <button @click="showMore(burger.ingredientes, burger.calorias)">Ver más</button>
             <button @click="deleteBurger(burger.id)">Eliminar</button>
@@ -26,7 +26,9 @@ export default {
         },
         deleteBurger(id) {
             console.log(id);
-            this.$http.delete('https://prueba-hamburguesas.herokuapp.com/burger/' + id).then((response) => { this.burgers = response.data;}, err => console.log(err));
+            if (confirm("Estás seguro de eliminar esta hamburguesa?")) {
+                this.$http.delete('https://prueba-hamburguesas.herokuapp.com/burger/' + id).then((response) => { this.burgers = response.data;}, err => console.log(err));
+            }
         }
     },
     created() {

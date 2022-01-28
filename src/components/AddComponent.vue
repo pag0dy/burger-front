@@ -3,8 +3,14 @@
     <h2>Crea una nueva hamburguesa</h2>
   </div>
   <div id="formulario">
-    
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" id="nombre" v-model="newBurger.nombre"> <br>
+    <label for="ingredientes">Ingredientes:</label>
+    <textarea name="ingredientes" id="ingredientes" cols="20" rows="10" v-model="newBurger.ingredientes"></textarea>
+    <label for="calorias">Calorías:</label>
+    <input type="number" name="calorias" id="calorias" v-model="newBurger.calorias">
   </div>
+  <button @click="addBurger">Guardar</button>
 </template>
 
 <script>
@@ -13,21 +19,22 @@ export default {
   // props: ['id', 'nombre', 'ingredientes', 'calorias'],
   data() {
     return {
-      burger: 'no burger',
+      newBurger: {
+        id: 0,
+        nombre: '',
+        ingredientes: [],
+        calorias: 0
+      } 
     };
   },
   methods: {
     addBurger() {
-      // Acá tienes un ejemplo de llamada http a la api
-      // puedes encontrar documentación para usar el cliente http de vue aquí:
-      // https://github.com/pagekit/vue-resource
-      this.$http.post('https://prueba-hamburguesas.herokuapp.com/burger/', {"id":100, "nombre":"Vegetariana", "ingredientes":["pan", "falafel", "pimenton", "tomate", "palta"], "calorias":250})
+      const ingredientList = this.newBurger.ingredientes.split(',');
+      this.newBurger.ingredientes = ingredientList;
+      this.$http.post('https://prueba-hamburguesas.herokuapp.com/burger/', this.newBurger)
         .then((response) => { this.saludo = response.data; }, err => console.log(err));
+        console.log(this.newBurger)
     },
-  },
-  created() {
-    console.log('componente welcome creado!, llamando a api');
-    this.addBurger();
   },
 }
 </script>

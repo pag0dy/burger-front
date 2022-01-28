@@ -1,7 +1,7 @@
 <template>
   <div class="add">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <AddComponent :burgers="burger"/>
+    <img alt="Vue logo" src="../assets/burger.svg">
+    <AddComponent :newBurger="newBurger"/>
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      unaVariable: 'una cosa cualquiera'
+      newBurger: "newBurger"
     }
   }
 }
