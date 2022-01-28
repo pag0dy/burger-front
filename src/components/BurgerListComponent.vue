@@ -4,10 +4,6 @@
             <h3>{{ burger.nombre }}</h3>
             <button @click="showMore(burger.ingredientes, burger.calorias)">Ver más</button>
             <button @click="deleteBurger(burger.id)">Eliminar</button>
-            <ul id="ingredientes" v-for="ingrediente in burger.ingredientes" :key=ingrediente>
-                   <li>{{ ingrediente }}</li>
-               </ul>
-            <p id="calorias(burger.id)">Calorias: {{ burger.calorias }}</p>
         </div>
     </div>
 </template>
@@ -30,6 +26,7 @@ export default {
         },
         deleteBurger(id) {
             console.log(id);
+            this.$http.delete('https://prueba-hamburguesas.herokuapp.com/burger/' + id).then((response) => { this.burgers = response.data;}, err => console.log(err));
         }
     },
     created() {
@@ -40,17 +37,6 @@ export default {
 </script>
 
 <style>
-ul {
-    display: none;
-    list-style-type: none;
-}
-
-p {
-    display:none;
-}
-h2 {
-    text-transform: uppercase ;
-    }
 
 span {
     font-weight: bold;
