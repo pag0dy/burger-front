@@ -13,26 +13,28 @@ export default {
     name: 'Burgers',
     data() {
         return {
-            burgers: '...'
+            burgers: []
         };
     },
     methods: {
         getBurgers() {
-            this.$http.get('https://prueba-hamburguesas.herokuapp.com/burger').then((response) => { this.burgers = response.data;}, err => console.log(err));
+            this.burgers = setInterval(() => this.$http.get('https://prueba-hamburguesas.herokuapp.com/burger').then((response) => { this.burgers = response.data;}, err => console.log(err)), 2000)
         },
         showMore(ingredientes, calorias) {
             console.log(ingredientes, calorias);
-            alert("Ingredientes: " + ingredientes + "\nCalorías: " + calorias)
+            alert("Ingredientes: " + ingredientes + "\nCalorías: " + calorias);
         },
         deleteBurger(id) {
             console.log(id);
             if (confirm("Estás seguro de eliminar esta hamburguesa?")) {
-                this.$http.delete('https://prueba-hamburguesas.herokuapp.com/burger/' + id).then((response) => { this.burgers = response.data;}, err => console.log(err));
+                this.$http.delete('https://prueba-hamburguesas.herokuapp.com/burger/' + id);
             }
-        }
+        },
+    },
+    beforeUnmount () {
+        clearInterval(this.getBurgers);
     },
     created() {
-        console.log('componente burguers creado, ahora llamando a la api');
         this.getBurgers();
         },
     }

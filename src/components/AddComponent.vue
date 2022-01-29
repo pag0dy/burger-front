@@ -16,7 +16,6 @@
 <script>
 export default {
   name: 'AddComponent',
-  // props: ['id', 'nombre', 'ingredientes', 'calorias'],
   data() {
     return {
       newBurger: {
@@ -32,8 +31,9 @@ export default {
       const ingredientList = this.newBurger.ingredientes.split(',');
       this.newBurger.ingredientes = ingredientList;
       this.$http.post('https://prueba-hamburguesas.herokuapp.com/burger/', this.newBurger)
-        .then((response) => { this.saludo = response.data; }, err => console.log(err));
-        console.log(this.newBurger)
+        .then( alert("Hamburguesa creada!"), this.$router.push({name: 'hamburguesas'}));
+      this.newBurger = {id:0,nombre:'',ingredientes:[],calorias:0}
+
     },
   },
 }
