@@ -30,18 +30,21 @@ export default {
     },
     methods: {
         getBurgers() {
+            // Agregué la función "setInterval" porque la página no se actualizaba al eliminar una hamburguesa
             this.burgers = setInterval(() => this.$http.get('https://prueba-hamburguesas.herokuapp.com/burger').then((response) => { this.burgers = response.data;}, err => console.log(err)), 2000)
         },
         showMore(ingredientes, calorias) {
+            // Utilicé un alert para mostrar la información de cada hamburguesa. No quise demorarme más por intentar hacer un modal customizado.
             alert("Ingredientes: " + ingredientes + "\nCalorías: " + calorias);
         },
         deleteBurger(id) {
-            console.log(id);
+            // Se despliega una alerta para confirmar que se desea eliminar una hamburguesa.
             if (confirm("Estás seguro de eliminar esta hamburguesa?")) {
                 this.$http.delete('https://prueba-hamburguesas.herokuapp.com/burger/' + id);
             }
         },
     },
+    // Esta función evita que el intervalo siga corriendo cuando se cambia de página.
     beforeUnmount () {
         clearInterval(this.getBurgers);
     },

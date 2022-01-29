@@ -46,13 +46,19 @@ export default {
   },
   methods: {
     addBurger() {
+      // Agregué esta constante para guardar los ingredientes ingresados como una lista, usando el método split.
       const ingredientList = this.newBurger.ingredientes.split(',');
+      // Aquí se agregan los ingredientes como lista al objeto newBurger.
       this.newBurger.ingredientes = ingredientList;
+      // Una vez consolidado el objeto newBurger, hago un POST para agregarlo a la base de datos.
+      // Luego se despliega una alerta que avisa que se ha creado exitosamente la hamburguesa y redirecciono a la vista principal.
       this.$http.post('https://prueba-hamburguesas.herokuapp.com/burger/', this.newBurger)
         .then( alert("Hamburguesa creada!"), this.$router.push({name: 'hamburguesas'}));
+      // Por último, limpio el formulario. 
       this.newBurger = {id:0,nombre:'',ingredientes:[],calorias:0}
     },
     clearBurger() {
+      // Permite limpiar el formulario si no se quiere guardar los datos ingresados.
       this.newBurger = {id:0,nombre:'',ingredientes:[],calorias:0}
     }
   },
