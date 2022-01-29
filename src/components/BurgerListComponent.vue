@@ -1,6 +1,10 @@
 <template>
+    <div class="header">
+        <h1>Hamburguesas</h1>
+        <p>Aquí encontrarás las hamburguesas disponibles.</p>
+    </div>
     <div class="container">
-        <div class="row row-cols-1 row-cols-md-4 gy-2 justify-content-">
+        <div class="row row-cols-1 row-cols-md-4 gy-3 justify-content-center">
             <div id="burgers" v-for="burger in burgers" :key=burger.id>
                 <div class="col">
                     <div class="card bg-light">
@@ -29,7 +33,6 @@ export default {
             this.burgers = setInterval(() => this.$http.get('https://prueba-hamburguesas.herokuapp.com/burger').then((response) => { this.burgers = response.data;}, err => console.log(err)), 2000)
         },
         showMore(ingredientes, calorias) {
-            console.log(ingredientes, calorias);
             alert("Ingredientes: " + ingredientes + "\nCalorías: " + calorias);
         },
         deleteBurger(id) {
@@ -52,6 +55,7 @@ export default {
 
 .card {
     width:fit-content;
+    color: black;
 }
 
 span {
