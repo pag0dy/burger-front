@@ -21,3 +21,12 @@ export default {
   }
 }
 </script>
+<style>
+.add {
+  background-color: #f0f0f0;
+  padding: 2rem 0;
+  margin: 0 2rem;
+  border-radius: 1rem;
+}
+
+</style>
