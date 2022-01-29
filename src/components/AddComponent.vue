@@ -63,6 +63,7 @@ export default {
 
 .container {
   padding: 1rem 0;
+  color: white;
 }
 
 label {
@@ -71,7 +72,8 @@ label {
 
 .header {
   padding: 2rem;
-  background-color: #f0f0f0;
+  background-color: #581b98;
+  color: white;
 }
 
 </style>
